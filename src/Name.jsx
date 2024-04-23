@@ -1,8 +1,13 @@
 // function
+// UI
+// null
+// props (input)
+import React from 'react';
 
-function Name() {
+function Name({ value, age }) {
+    // interpolation
     return <div>
-        <span>Hello, John</span>
+        <span>Hello, {value} {age}</span>
     </div>
 }
 

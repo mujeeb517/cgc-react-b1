@@ -4,6 +4,7 @@
 // Top level components
 
 import React from 'react';
+import Counter from './Counter';
 import Name from './Name';
 import ProductList from './ProductList';
 import Skills from './Skills';
@@ -11,6 +12,7 @@ import Skills from './Skills';
 const App = () => {
     return (<div>
         {/* <Skills /> */}
+        <Counter />
         <ProductList />
         {/* <Name value="John" />
         <Name value="Joseph" />

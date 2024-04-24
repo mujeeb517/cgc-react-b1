@@ -1,3 +1,6 @@
+import ProductItem from "./ProductItem";
+
+// container component
 function ProductList() {
 
     const items = [
@@ -26,21 +29,9 @@ function ProductList() {
                 </tr>
             </thead>
             <tbody>
-                {
-                    items.map(item=><tr>
-                        <td>{item.id}</td>
-                        <td>{item.brand}</td>
-                        <td>{item.model}</td>
-                        <td>${item.price}</td>
-                        <td>
-                            <img src={item.image} width="100" height="100" />
-                        </td>
-                    </tr>)
-                }
+                {items.map(it => <ProductItem item={it} />)}
             </tbody>
         </table>
-
-
     </div>);
 }
 

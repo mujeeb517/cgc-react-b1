@@ -1,6 +1,6 @@
 // presentation component
 function ProductItem({ item }) {
-    return <tr>
+    return <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
         <td>{item.id}</td>
         <td>{item.brand}</td>
         <td>{item.model}</td>

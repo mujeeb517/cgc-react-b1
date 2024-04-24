@@ -8,7 +8,7 @@ function ProductList() {
         { id: 2, brand: 'Apple', model: 'Iphone 14', price: 1100, image: 'https://cdn.dxomark.com/wp-content/uploads/medias/post-125834/Apple-iPhone-14_FINAL_featured-image-packshot-review.jpg' },
         { id: 3, brand: 'Apple', model: 'Iphone 15', price: 1100, image: 'https://fdn2.gsmarena.com/vv/pics/apple/apple-iphone-15-1.jpg' }];
 
-    return (<div>
+    return (<div class="m-2">
         <h1>Products</h1>
         {/* {
             items.map(item => <div>
@@ -18,8 +18,8 @@ function ProductList() {
                 <hr />
             </div>)
         } */}
-        <table width="100%" border="1">
-            <thead>
+        <table class="w-full text-sm text-left text-gray-500" width="100%" border="1">
+            <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                 <tr>
                     <th>Id</th>
                     <th>Brand</th>

@@ -5,6 +5,7 @@
     * events
     * State (internal, mutable)
     * stateful components
+    * Tailwind
 */
 import React from 'react';
 
@@ -30,8 +31,8 @@ class Counter extends React.Component {
     render() {
         return <div>
             <h1>Count : {this.state.count}</h1>
-            <button onClick={this.onInc}>++</button>
-            <button onClick={this.onDec}>--</button>
+            <button class="bg-orange-500 px-2 py-1 m-1 text-white hover:bg-orange-600 rounded" onClick={this.onInc}>++</button>
+            <button class="bg-orange-500 px-2 py-1 m-1 text-white hover:bg-orange-600 rounded" onClick={this.onDec}>--</button>
         </div>;
     }
 }

@@ -1,6 +1,7 @@
 import { Component } from "react";
 import axios from 'axios';
 import Error from "../util/Error";
+import ShouldRender from "../util/ShouldRender";
 
 function UserItem({ user }) {
     return <div className="m-4 p-2">
@@ -23,16 +24,16 @@ class UserList extends Component {
         // how do i know
         // how can I show err msg
         // conditional rendering
-        axios.get('https://api.github.com/users')
+        axios.get('https://api.github.com/users1')
             .then(res => this.setState({ users: res.data }))
             .catch(() => this.setState({ hasError: true }));
     }
 
     render() {
         return <div>
-            {this.state.hasError && <Error msg="Customized message" />}
-            {this.state.hasError && <Error />}
-            {this.state.hasError && <Error />}
+            <ShouldRender when={this.state.hasError}>
+                <Error msg="Customized" />
+            </ShouldRender>
             <h1 className="ml-4 text-xl font-semibold text-gray-500">Users</h1>
             {this.state.users.map(user => <UserItem user={user} />)}
         </div>;

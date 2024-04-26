@@ -24,7 +24,7 @@ class UserList extends Component {
         // how do i know
         // how can I show err msg
         // conditional rendering
-        axios.get('https://api.github.com/users1')
+        axios.get('https://api.github.com/users')
             .then(res => this.setState({ users: res.data }))
             .catch(() => this.setState({ hasError: true }));
     }

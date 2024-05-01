@@ -46,7 +46,7 @@ class ProductList extends Component {
     }
 
     fetchData = () => {
-        const url = `https://cgc-node-b1.onrender.com/api/v1/products/page/${this.state.page}/size/10?search=${this.state.search}`;
+        const url = `https://cgc-node-b1.onrender.com/api/v1/products/page/${this.state.page}/size/10?search=${this.state.search}&sort=${this.state.sort}&direction=${this.state.direction}`;
         axios.get(url)
             .then(res => this.setState({ products: res.data.data, metadata: res.data.metadata }))
             .catch(err => this.setState({ hasError: true }))
@@ -66,7 +66,7 @@ class ProductList extends Component {
     }
 
     componentDidUpdate(nextProps, nextState) {
-        if (nextState.page !== this.state.page) this.fetchData();
+        if (nextState.page !== this.state.page || nextState.sort !== this.state.sort) this.fetchData();
     }
 
     onTextChange = (evt) => {
@@ -83,7 +83,7 @@ class ProductList extends Component {
         // price:asc
         const sortString = evt.target.value;
         const tokens = sortString.split(':');
-        this.setState({ sort: tokens[0], directions: tokens[1] });
+        this.setState({ sort: tokens[0], direction: tokens[1] });
         this.fetchData();
     }
 
@@ -142,8 +142,6 @@ class ProductList extends Component {
 }
 
 export default ProductList;
-
-
 /*
     << <  > >>
 

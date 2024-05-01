@@ -5,6 +5,8 @@ import Home from "./Home";
 import About from "./About";
 import Contact from "./Contact";
 import NotFound from "./NotFound";
+import ProductItem from "./product/ProductItem";
+import ProductDetail from "./product/ProductDetail";
 
 function MainApp() {
     return (<main className="flex flex-col justify-between h-full">
@@ -14,6 +16,7 @@ function MainApp() {
                 <Route path="/about" element={<About />} />
                 <Route path="/contact" element={<Contact />} />
                 <Route path="/products" element={<ProductList />} />
+                <Route path="/products/:id" element={<ProductDetail />} />
                 <Route path="/users" element={<UserList />} />
                 {/* <Route path="*" element={<Home />} /> */}
                 <Route path="*" element={<NotFound />} />

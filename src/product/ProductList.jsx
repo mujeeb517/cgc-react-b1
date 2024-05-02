@@ -73,7 +73,7 @@ function ProductList() {
     return <div>
         <div className="flex m-2">
             <h1 className="text-xl font-semibold text-gray-500 m-2">Products</h1>
-            <div className="flex">
+            <div className="flex justify-between">
                 <button style={{ backgroundColor: page === 1 ? 'gray' : '' }} onClick={onPrev} className="bg-orange-500 p-1 text-white m-1 hover:bg-orange-600">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
                         <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
@@ -88,17 +88,16 @@ function ProductList() {
                 <div class="flex">
                     <label for="default-search" class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
                     <div class="relative">
-                        <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+                        <div class="absolute w-full inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
                             <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
                                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
                             </svg>
                         </div>
                         <input onKeyUp={onKeyUp} onChange={onTextChange} type="search" id="default-search" class="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500" placeholder="Search brand or model" required />
-                        <button onClick={onSearch} type="submit" class="text-white absolute end-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2">Search</button>
                     </div>
                 </div>
                 <div>
-                    <select onChange={onSortChange} className="border border-orange-500 h-10 rounded m-2">
+                    <select onChange={onSortChange} className="ml-2 block w-full p-4 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500">
                         <option value="">Sort</option>
                         <option value="price:asc">Price Low to High</option>
                         <option value="price:desc">Price High to Low</option>

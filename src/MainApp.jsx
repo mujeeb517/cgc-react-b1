@@ -9,7 +9,7 @@ import ProductItem from "./product/ProductItem";
 import ProductDetail from "./product/ProductDetail";
 
 function MainApp() {
-    return (<main className="flex flex-col justify-between h-full">
+    return (<main className="flex flex-grow flex-col justify-between">
         <div className="items-start">
             <Routes>
                 <Route path="/" element={<Home />} />

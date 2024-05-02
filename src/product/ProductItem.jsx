@@ -2,7 +2,7 @@ import React from "react";
 import moment from 'moment';
 import ShouldRender from "../util/ShouldRender";
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import NoProductImg from '../assets/no-img.png';
 
 function Actions({ product }) {
@@ -54,7 +54,11 @@ function Price({ product }) {
 
 function ProductItem({ product }) {
 
-    const [src, setSrc] = useState(product.image || NoProductImg);
+    const [src, setSrc] = useState(null);
+
+    useEffect(() => {
+        setSrc(product.image || NoProductImg);
+    },[]);
 
     function onImgError() {
         setSrc(NoProductImg);

@@ -11,6 +11,7 @@ import ProductItem from "./ProductItem";
 // componentWillUpdate: nX
 // componentDidUpdate: nX
 // componentWillUnmount: 1x
+// useState, useEffect, useParams
 
 function ProductList() {
 
@@ -31,16 +32,18 @@ function ProductList() {
         if (page < metadata.pages) setPage(page + 1);
     }
 
-    const fetchData = () => {
+    const fetchData = async () => {
         setLoading(true);
         const url = `https://cgc-node-b1.onrender.com/api/v1/products/page/${page}/size/10?search=${search}&sort=${sort}&direction=${direction}`;
-        axios.get(url)
-            .then(res => {
-                setProducts(res.data.data);
-                setMetadata(res.data.metadata);
-            })
-            .catch(err => setError(true))
-            .finally(() => setLoading(false));
+        try {
+            const res = await axios.get(url);
+            setProducts(res.data.data);
+            setMetadata(res.data.metadata);
+        } catch (err) {
+            setError(true);
+        } finally {
+            setLoading(false);
+        }
     }
 
     // componentDidMount

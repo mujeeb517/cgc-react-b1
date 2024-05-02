@@ -1,30 +1,27 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useState } from 'react';
 
 // Routing
 // Moment
 // willUnMount
-class AutoCounter extends React.Component {
+function AutoCounter() {
 
-    state = { count: 0 };
+    const [count, setCount] = useState(0);
 
-    componentDidMount() {
-        this.timer = setInterval(() => {
-            this.setState({ count: this.state.count + 1 });
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            setCount(count + 1);
             console.log('Updating');
         }, 1000);
-    }
+        // component will unmount
+        return () => {
+            clearTimeout(timer);
+        };
+    }, [count]);
 
-    // clean up
-    componentWillUnmount() {
-        console.log('unmounted');
-        clearInterval(this.timer);
-    }
-
-    render() {
-        return <div>
-            <h1 className="text-xl font-semibold">Count {this.state.count}</h1>
-        </div>
-    }
+    return <div>
+        <h1 className="text-xl font-semibold">Count {count}</h1>
+    </div>
 }
 
 export default AutoCounter;

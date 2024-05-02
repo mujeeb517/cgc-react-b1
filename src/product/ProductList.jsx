@@ -66,7 +66,9 @@ class ProductList extends Component {
     }
 
     componentDidUpdate(nextProps, nextState) {
-        if (nextState.page !== this.state.page || nextState.sort !== this.state.sort) this.fetchData();
+        if (nextState.page !== this.state.page
+            || nextState.sort !== this.state.sort
+            || nextState.direction !== this.state.direction) this.fetchData();
     }
 
     onTextChange = (evt) => {
@@ -84,7 +86,6 @@ class ProductList extends Component {
         const sortString = evt.target.value;
         const tokens = sortString.split(':');
         this.setState({ sort: tokens[0], direction: tokens[1] });
-        this.fetchData();
     }
 
     // fetch

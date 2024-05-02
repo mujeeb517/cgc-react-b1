@@ -3,6 +3,9 @@ import React from 'react';
 import ShouldRender from '../util/ShouldRender';
 import ProductItem from './ProductItem';
 
+// functional components 16.x
+// legacy
+// migration
 class ProductDetail extends React.Component {
     state = { product: null };
 

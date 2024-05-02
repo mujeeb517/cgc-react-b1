@@ -1,33 +1,29 @@
 import axios from 'axios';
 import React from 'react';
+import { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 import ShouldRender from '../util/ShouldRender';
 import ProductItem from './ProductItem';
 
 // functional components 16.x
 // legacy
 // migration
-class ProductDetail extends React.Component {
-    state = { product: null };
+// hooks -> useEffect
+function ProductDetail() {
+    const [product, setProduct] = useState(null);
+    const params = useParams();
 
-    componentDidMount() {
-        const id = '663067abe163794c9fe1203e';
+    // componentDidMount
+    useEffect(() => {
+        const id = params.id;
         axios.get('https://cgc-node-b1.onrender.com/api/v1/products/' + id)
-            .then(res => this.setState({ product: res.data }))
+            .then(res => setProduct(res.data))
             .catch(err => console.log(err));
-    }
+    }, []);
 
-    render() {
-        return <ShouldRender when={this.state.product}>
-            <ProductItem product={this.state.product} />
-        </ShouldRender>;
-    }
+    return <ShouldRender when={product}>
+        <ProductItem product={product} />
+    </ShouldRender>;
 }
 
 export default ProductDetail;
-
-// https://fakestoreapi.com/
-// Todo
-// CRUD
-// Routing
-// Products
-// Github repo admin, access

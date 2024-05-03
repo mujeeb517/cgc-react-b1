@@ -7,6 +7,7 @@ import Contact from "./Contact";
 import NotFound from "./NotFound";
 import ProductItem from "./product/ProductItem";
 import ProductDetail from "./product/ProductDetail";
+import NewProduct from "./product/NewProduct";
 
 function MainApp() {
     return (<main className="flex flex-grow flex-col justify-between">
@@ -16,6 +17,7 @@ function MainApp() {
                 <Route path="/about" element={<About />} />
                 <Route path="/contact" element={<Contact />} />
                 <Route path="/products" element={<ProductList />} />
+                <Route path="/products/new" element={<NewProduct />} />
                 <Route path="/products/:id" element={<ProductDetail />} />
                 <Route path="/users" element={<UserList />} />
                 {/* <Route path="*" element={<Home />} /> */}

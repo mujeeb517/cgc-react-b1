@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import Error from "../util/Error";
 import Loader from "../util/Loader";
 import ShouldRender from "../util/ShouldRender";
@@ -105,6 +106,7 @@ function ProductList() {
                         <option value="discount:desc">Discount High to Low</option>
                     </select>
                 </div>
+                <Link to="/products/new" className="mx-4 rounded my-2 p-2 bg-orange-500 text-white hover:bg-orange-600">Add Product</Link>
 
             </div>
         </div>

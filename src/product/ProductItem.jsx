@@ -58,7 +58,8 @@ function ProductItem({ product }) {
 
     useEffect(() => {
         setSrc(product.image || NoProductImg);
-    },[]);
+    }, [product]);
+
 
     function onImgError() {
         setSrc(NoProductImg);

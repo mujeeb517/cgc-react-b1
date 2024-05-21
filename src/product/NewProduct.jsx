@@ -11,7 +11,8 @@ function NewProduct() {
         model: '',
         price: '',
         discount: '',
-        inStock: false
+        inStock: false,
+        image: null
     });
 
     const navigate = useNavigate();
@@ -24,16 +25,26 @@ function NewProduct() {
         setProduct(newState);
     };
 
+    const onFileChange = (evt) => {
+        const newState = { ...product, image: evt.target.files[0] };
+        setProduct(newState);
+    };
+
     const onSave = async () => {
         try {
-            const res = await axios.post('https://cgc-node-b1.onrender.com/api/v1/products', product);
+            const fd = new FormData();
+            for (let key in product) {
+                fd.append(key, product[key]);
+            }
+            const res = await axios.post('https://cgc-node-b1.onrender.com/api/v1/products', fd);
             setSuccess(true);
             setProduct({
                 brand: '',
                 model: '',
                 price: '',
                 discount: '',
-                inStock: false
+                inStock: false,
+                image: null
             });
             navigate('/products/');
         } catch (err) {
@@ -99,6 +110,10 @@ function NewProduct() {
 
             <input onChange={onInputChange} name="inStock" type="radio" value="false" />
             <label className="py-1 m-2">No</label>
+        </div>
+
+        <div className="mb-4">
+            <input type="file" onChange={onFileChange} />
         </div>
 
         <div>

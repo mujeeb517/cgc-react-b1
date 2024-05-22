@@ -29,6 +29,9 @@ function Header() {
                         </svg>
                     </Link>
                 </li>
+                <li>
+                    <button className="m-1">Logout</button>
+                </li>
             </ul>
         </nav >
     </header >);

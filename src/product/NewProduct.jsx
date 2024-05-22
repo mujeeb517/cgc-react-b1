@@ -1,5 +1,5 @@
 import { useState } from "react";
-import axios from 'axios';
+import axiosInstance from '../util/axios';
 import ShouldRender from "../util/ShouldRender";
 import Error from "../util/Error";
 import { useNavigate } from "react-router-dom";
@@ -36,7 +36,7 @@ function NewProduct() {
             for (let key in product) {
                 fd.append(key, product[key]);
             }
-            const res = await axios.post('https://cgc-node-b1.onrender.com/api/v1/products', fd);
+            await axiosInstance().post('/api/v1/products', fd);
             setSuccess(true);
             setProduct({
                 brand: '',

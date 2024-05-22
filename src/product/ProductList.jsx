@@ -1,10 +1,10 @@
-import axios from "axios";
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Error from "../util/Error";
 import Loader from "../util/Loader";
 import ShouldRender from "../util/ShouldRender";
 import ProductItem from "./ProductItem";
+import axiosInstance from '../util/axios';
 
 // constructor: 1x
 // componentDidMount: 1x
@@ -38,13 +38,9 @@ function ProductList() {
 
     const fetchData = async () => {
         setLoading(true);
-        const url = `https://cgc-node-b1.onrender.com/api/v1/products/page/${page}/size/10?search=${search}&sort=${sort}&direction=${direction}`;
+        const path = `/api/v1/products/page/${page}/size/10?search=${search}&sort=${sort}&direction=${direction}`;
         try {
-            const res = await axios.get(url, {
-                headers: {
-                    Authorization: `Bearer ${localStorage.getItem('token')}`
-                }
-            });
+            const res = await axiosInstance().get(path);
             setProducts(res.data.data);
             setMetadata(res.data.metadata);
         } catch (err) {
@@ -53,6 +49,7 @@ function ProductList() {
                 return;
             }
             setError(true);
+            console.error(err);
         } finally {
             setLoading(false);
         }

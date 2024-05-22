@@ -78,6 +78,11 @@ function ProductList() {
         setDirection(tokens[1]);
     }
 
+    const refresh = (id) => {
+        console.log('product deleted with id', id);
+        fetchData();
+    }
+
     // fetch
     return <div>
         <div className="flex m-2">
@@ -125,7 +130,7 @@ function ProductList() {
             <Error />
         </ShouldRender>
         <div className="grid md:grid-cols-3 sm:grid-cols-2">
-            {products.map(product => <ProductItem product={product} />)}
+            {products.map(product => <ProductItem product={product} onItemDelete={refresh} />)}
         </div>
     </div>;
 }

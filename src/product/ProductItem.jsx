@@ -4,6 +4,8 @@ import ShouldRender from "../util/ShouldRender";
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import NoProductImg from '../assets/no-img.png';
+import axiosInstance from '../util/axios';
+import Error from "../util/Error";
 
 function Actions({ product }) {
     return <>
@@ -52,9 +54,10 @@ function Price({ product }) {
     </>
 }
 
-function ProductItem({ product }) {
+function ProductItem({ product, onItemDelete }) {
 
     const [src, setSrc] = useState(null);
+    const [err, setErr] = useState(false)
 
     useEffect(() => {
         setSrc(product.image || NoProductImg);
@@ -65,7 +68,30 @@ function ProductItem({ product }) {
         setSrc(NoProductImg);
     }
 
+    const onDelete = async () => {
+        try {
+            await axiosInstance().delete(`/api/v1/products/${product._id}`);
+            // communicate parent
+            onItemDelete(product._id);
+        } catch (err) {
+            setErr(true);
+            if (err.response && err.response.status === 403) {
+                console.log('you do no have permission to delete');
+                return;
+            }
+        }
+    };
+
     return <div className="m-2 w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow">
+
+        <button onClick={onDelete} className="m-1 hover:bg-orange-500 hover:text-white hover:rounded">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
+            </svg>
+        </button>
+        <ShouldRender when={err}>
+            <Error msg="No permission to delete" />
+        </ShouldRender>
         <Link to={'/products/' + product._id}>
             <img onError={onImgError} className="p-8 rounded-t-lg" src={src} alt="product image" />
             <div className="px-5 pb-5">
@@ -79,3 +105,13 @@ function ProductItem({ product }) {
 }
 
 export default ProductItem;
+
+
+/*
+   // top down
+   // bottom to top
+    ProductList (data/container)
+        PI (delete)
+        PI
+        PI
+*/

@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Error from "../util/Error";
 import Loader from "../util/Loader";
 import ShouldRender from "../util/ShouldRender";
@@ -24,6 +24,7 @@ function ProductList() {
     const [search, setSearch] = useState('');
     const [sort, setSort] = useState('');
     const [direction, setDirection] = useState('');
+    const navigate = useNavigate();
 
     const onPrev = () => {
         if (page > 1) setPage(page - 1);
@@ -33,14 +34,24 @@ function ProductList() {
         if (page < metadata.pages) setPage(page + 1);
     }
 
+    const authErr = (err) => err.response && err.response.status === 401;
+
     const fetchData = async () => {
         setLoading(true);
         const url = `https://cgc-node-b1.onrender.com/api/v1/products/page/${page}/size/10?search=${search}&sort=${sort}&direction=${direction}`;
         try {
-            const res = await axios.get(url);
+            const res = await axios.get(url, {
+                headers: {
+                    Authorization: `Bearer ${localStorage.getItem('token')}`
+                }
+            });
             setProducts(res.data.data);
             setMetadata(res.data.metadata);
         } catch (err) {
+            if (authErr(err)) {
+                navigate('/login');
+                return;
+            }
             setError(true);
         } finally {
             setLoading(false);

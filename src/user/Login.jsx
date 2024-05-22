@@ -4,6 +4,9 @@ import { useNavigate } from "react-router-dom";
 import Error from "../util/Error";
 import ShouldRender from "../util/ShouldRender";
 
+
+// credentials -> token -> save token -> get products (token)
+
 function Login() {
 
     const [user, setUser] = useState({});
@@ -21,6 +24,7 @@ function Login() {
             console.log('user', user);
             const res = await axios.post('https://cgc-node-b1.onrender.com/api/v1/users/signin', user);
             // redirect to products page
+            localStorage.setItem('token', res.data.token);
             navigate('/products');
         } catch (err) {
             setErr(true);

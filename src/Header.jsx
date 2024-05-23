@@ -1,7 +1,15 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 // SPA: Single Page Application
 function Header() {
+
+    const navigate = useNavigate();
+
+    const onLogout = () => {
+        localStorage.removeItem('token');
+        navigate('/login');
+    };
+
     return (<header>
         <nav className="flex bg-orange-500 text-white h-9 flow-root">
             <div className="text-2xl font-lighter flex float-left hover:text-orange-600">
@@ -30,7 +38,7 @@ function Header() {
                     </Link>
                 </li>
                 <li>
-                    <button className="m-1">Logout</button>
+                    <button onClick={onLogout} className="m-1">Logout</button>
                 </li>
             </ul>
         </nav >

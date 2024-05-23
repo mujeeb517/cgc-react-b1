@@ -51,7 +51,7 @@ function Header() {
                 </ShouldRender>
             </ul>
         </nav >
-    </header >);
+    </header>);
 }
 
 export default Header;
@@ -67,4 +67,27 @@ const x = 10;
         </Level2>
     </Level1>
 </Parent>
+
+Virtual dom
+
+DOM
+
+
+updated
+
+virtual dom
+
+this.setState({});
+
+Diff
+current:
+<div>
+    <h1>Count 10</h1>
+</div>
+
+future:
+<div>
+ <h1>Count 11</h1>
+</div>
+
 */

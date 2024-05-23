@@ -114,4 +114,20 @@ export default ProductItem;
         PI (delete)
         PI
         PI
+
+
+        function      fn( longVariableName,     longVariableName2){
+            return     1000;
+        }
+
+        // 270KB
+        // uglification
+         function fn(a,b){
+            return 1000;
+        }
+
+        // minification
+        function fn(a,b){
+            return 1000;
+        }
 */

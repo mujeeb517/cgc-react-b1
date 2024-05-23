@@ -1,13 +1,18 @@
 import { Link, useNavigate } from "react-router-dom";
+import ShouldRender from "./util/ShouldRender";
+import { useContext } from "react";
+import UserContext from "./context/UserContext";
 
 // SPA: Single Page Application
 function Header() {
 
+    const { isLoggedin, setLoggedin } = useContext(UserContext);
     const navigate = useNavigate();
 
     const onLogout = () => {
         localStorage.removeItem('token');
         navigate('/login');
+        setLoggedin(false);
     };
 
     return (<header>
@@ -37,12 +42,27 @@ function Header() {
                         </svg>
                     </Link>
                 </li>
-                <li>
-                    <button onClick={onLogout} className="m-1">Logout</button>
-                </li>
+                <ShouldRender when={isLoggedin}>
+                    <li>
+                        <button onClick={onLogout} className="m-1">Logout</button>
+                    </li>
+                </ShouldRender>
             </ul>
         </nav >
     </header >);
 }
 
 export default Header;
+
+/*
+const x = 10;
+<Parent>
+    <Level1 x={x}>
+        <Level2 x={x}>
+            <Level3 x={x}>
+                <Level4 x={x}/>
+            </Level3>
+        </Level2>
+    </Level1>
+</Parent>
+*/

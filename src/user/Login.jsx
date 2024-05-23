@@ -1,8 +1,9 @@
 import axios from "axios";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Error from "../util/Error";
 import ShouldRender from "../util/ShouldRender";
+import UserContext from "../context/UserContext";
 
 
 // credentials -> token -> save token -> get products (token)
@@ -12,6 +13,7 @@ function Login() {
     const [user, setUser] = useState({});
     const [err, setErr] = useState(false);
     const navigate = useNavigate();
+    const { setLoggedin } = useContext(UserContext);
 
     const onInputChange = (evt) => {
         const newUser = { ...user, [evt.target.name]: evt.target.value };
@@ -26,6 +28,7 @@ function Login() {
             // redirect to products page
             localStorage.setItem('token', res.data.token);
             navigate('/products');
+            setLoggedin(true);
         } catch (err) {
             setErr(true);
         }

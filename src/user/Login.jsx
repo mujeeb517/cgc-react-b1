@@ -5,9 +5,7 @@ import Error from "../util/Error";
 import ShouldRender from "../util/ShouldRender";
 import UserContext from "../context/UserContext";
 
-
 // credentials -> token -> save token -> get products (token)
-
 function Login() {
 
     const [user, setUser] = useState({});
@@ -57,3 +55,43 @@ function Login() {
 }
 
 export default Login;
+
+// React.createElement
+// JSX
+// components
+// setup (main.jsx, index.html)
+// class components
+// state
+// props
+// container, presentation
+// functional
+// hooks
+// Routing
+// get, post, delete, error handling
+// loader (conditional rendering)
+// file upload
+// auth, authorization
+// login flow
+// cleaning up
+// packaging
+// deployed
+// axios
+// routing (react-router-dom)
+// full stack
+// HTML, CSS, Tailwind
+// JS 
+// NodeJS, Express, MongoDB (server)
+// React Frontend, backend
+// MERN
+// Java + React
+// Node + Angular
+// Glassdoor (Software engineer)
+// application Calculator
+
+/*
+    App
+        Calculator
+            Display
+            Button (*)
+*/
+

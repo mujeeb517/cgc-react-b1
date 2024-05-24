@@ -11,7 +11,6 @@ function AutoCounter() {
     useEffect(() => {
         const timer = setTimeout(() => {
             setCount(count + 1);
-            console.log('Updating');
         }, 1000);
         // component will unmount
         return () => {

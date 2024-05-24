@@ -79,7 +79,6 @@ function ProductList() {
     }
 
     const refresh = (id) => {
-        console.log('product deleted with id', id);
         fetchData();
     }
 

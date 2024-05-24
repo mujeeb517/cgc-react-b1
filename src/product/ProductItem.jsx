@@ -75,7 +75,6 @@ function ProductItem({ product, onItemDelete }) {
         } catch (err) {
             setErr(true);
             if (err.response && err.response.status === 403) {
-                console.log('you do no have permission to delete');
                 return;
             }
         }

@@ -23,7 +23,6 @@ function Login() {
     const onLogin = async (evt) => {
         evt.preventDefault();
         try {
-            console.log('user', user);
             const res = await axios.post('https://cgc-node-b1.onrender.com/api/v1/users/signin', user);
             // redirect to products page
             localStorage.setItem('token', res.data.token);

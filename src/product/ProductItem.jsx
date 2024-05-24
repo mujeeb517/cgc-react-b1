@@ -1,11 +1,10 @@
-import React from "react";
 import moment from 'moment';
 import ShouldRender from "../util/ShouldRender";
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import NoProductImg from '../assets/no-img.png';
 import axiosInstance from '../util/axios';
-import Error from "../util/Error";
+import Error from "../util/Error"
 
 function Actions({ product }) {
     return <>
@@ -97,10 +96,12 @@ function ProductItem({ product, onItemDelete }) {
             <div className="px-5 pb-5">
                 <h5 className="text-xl font-semibold tracking-tight text-gray-900">{product.brand} {product.model}</h5>
                 <Price product={product} />
-                <Actions product={product} />
                 <span>{moment(product.updatedDate).fromNow()}</span>
             </div>
         </Link>
+        <div className="px-5 pb-5">
+            <Actions product={product} />
+        </div>
     </div>;
 }
 

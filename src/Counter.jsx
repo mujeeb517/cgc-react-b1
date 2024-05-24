@@ -33,8 +33,8 @@ import { useState } from 'react';
 //     render() {
 //         return <div>
 //             <h1>Count : {this.state.count}</h1>
-//             <button class="bg-orange-500 px-2 py-1 m-1 text-white hover:bg-orange-600 rounded" onClick={this.onInc}>++</button>
-//             <button class="bg-orange-500 px-2 py-1 m-1 text-white hover:bg-orange-600 rounded" onClick={this.onDec}>--</button>
+//             <button className="bg-orange-500 px-2 py-1 m-1 text-white hover:bg-orange-600 rounded" onClick={this.onInc}>++</button>
+//             <button className="bg-orange-500 px-2 py-1 m-1 text-white hover:bg-orange-600 rounded" onClick={this.onDec}>--</button>
 //         </div>;
 //     }
 // }
@@ -53,8 +53,8 @@ function Counter() {
 
     return <div>
         <h1>Count : {count}</h1>
-        <button class="bg-orange-500 px-2 py-1 m-1 text-white hover:bg-orange-600 rounded" onClick={onInc}>++</button>
-        <button class="bg-orange-500 px-2 py-1 m-1 text-white hover:bg-orange-600 rounded" onClick={onDec}>--</button>
+        <button className="bg-orange-500 px-2 py-1 m-1 text-white hover:bg-orange-600 rounded" onClick={onInc}>++</button>
+        <button className="bg-orange-500 px-2 py-1 m-1 text-white hover:bg-orange-600 rounded" onClick={onDec}>--</button>
     </div>;
 }
 
